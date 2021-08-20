@@ -1,11 +1,15 @@
-import { ZERO_ADDRESS } from './../../constants';
-import { namehash } from "ethers/lib/utils"
-import { Base58 } from "@ethersproject/basex";
-import { ENS_REGISTRY } from "../../constants"
-import { ethers } from "ethers"
-import { callView } from '../../utils/ethereum';
+import { ZERO_ADDRESS } from "./../../constants";
+import { ENS_REGISTRY } from "../../constants";
+import { callView } from "../../utils/ethereum";
 
-export const getContentHash = async (domain: string, web3?: ethers.providers.JsonRpcProvider) => {
+import { namehash } from "ethers/lib/utils";
+import { Base58 } from "@ethersproject/basex";
+import { ethers } from "ethers";
+
+export const getContentHash = async (
+  domain: string,
+  web3?: ethers.providers.JsonRpcProvider
+) => {
   const resolverAddress = await callView(
     ENS_REGISTRY,
     "function resolver(bytes32 node) external view returns (address)",
@@ -13,7 +17,7 @@ export const getContentHash = async (domain: string, web3?: ethers.providers.Jso
     web3
   );
 
-  if(resolverAddress === ZERO_ADDRESS) {
+  if (resolverAddress === ZERO_ADDRESS) {
     return "";
   }
 
@@ -32,8 +36,8 @@ export const getContentHash = async (domain: string, web3?: ethers.providers.Jso
     hash.substring(0, 10) === "0xe3010170" &&
     ethers.utils.isHexString(hash, 38)
   ) {
-    return Base58.encode(ethers.utils.hexDataSlice(hash, 4))
+    return Base58.encode(ethers.utils.hexDataSlice(hash, 4));
   } else {
     throw Error(`Unkown CID format, CID hash: ${hash}`);
   }
-}
+};

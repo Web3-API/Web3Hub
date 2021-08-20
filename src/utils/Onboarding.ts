@@ -1,29 +1,30 @@
-import Onboard from 'bnc-onboard'
-import { API, Subscriptions } from 'bnc-onboard/dist/src/interfaces'
-import { networkID } from '../constants'
+import { networkID } from "../constants";
 
-let onboard: API | undefined
+import Onboard from "bnc-onboard";
+import { API, Subscriptions } from "bnc-onboard/dist/src/interfaces";
 
-const getOnboard = (subscriptions: Subscriptions) => {
+let onboard: API | undefined;
+
+const getOnboard = (subscriptions: Subscriptions): API => {
   if (!onboard) {
     onboard = Onboard({
-      dappId: '834729ff-3ae1-42ec-b770-95de5ff553a0',
+      dappId: "834729ff-3ae1-42ec-b770-95de5ff553a0",
       subscriptions,
       hideBranding: true,
       networkId: networkID,
       walletSelect: {
         wallets: [
-          { walletName: 'metamask', preferred: true },
+          { walletName: "metamask", preferred: true },
           {
-            walletName: 'walletConnect',
+            walletName: "walletConnect",
             preferred: true,
-            infuraKey: 'e1fd18285cab4a02adac214587d3f112',
+            infuraKey: "e1fd18285cab4a02adac214587d3f112",
           },
         ],
       },
-    })
+    });
   }
-  return onboard
-}
+  return onboard;
+};
 
-export default getOnboard
+export default getOnboard;

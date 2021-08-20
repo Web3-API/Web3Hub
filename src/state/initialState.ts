@@ -1,60 +1,61 @@
-import ethers from 'ethers'
-import { PluginRegistration, UriRedirect } from '@web3api/client-js'
-import { ipfsPlugin } from '@web3api/ipfs-plugin-js'
-import { ethereumPlugin } from '@web3api/ethereum-plugin-js'
+import { networkID } from "../constants";
+import { APIData } from "../hooks/ens/useGetAPIfromENS";
 
-import { networkID } from '../constants'
-import { APIData } from '../hooks/ens/useGetAPIfromENS'
+import ethers from "ethers";
+import { PluginRegistration, UriRedirect } from "@web3api/client-js";
+import { ipfsPlugin } from "@web3api/ipfs-plugin-js";
+import { ethereumPlugin } from "@web3api/ethereum-plugin-js";
 
 export interface State {
-  dapp: dappType
+  dapp: dappType;
   web3api: {
-    plugins: PluginRegistration[]
-  }
-  publish: publishType
-  search: searchType
+    plugins: PluginRegistration[];
+  };
+  publish: publishType;
+  search: searchType;
 }
 
 export const initialState: State = {
   dapp: {
-    balance: '-1',
+    balance: "-1",
     address: undefined,
     wallet: {
-      name: 'TEST',
+      name: "TEST",
     },
     network: networkID,
     web3: undefined,
     apis: [],
-    github: '',
+    github: "",
     did: undefined,
   },
   web3api: {
     plugins: [
       {
-        uri: 'ens/ethereum.web3api.eth',
+        uri: "ens/ethereum.web3api.eth",
         plugin: ethereumPlugin({
           networks: {
             mainnet: {
-              provider: 'https://mainnet.infura.io/v3/b00b2c2cc09c487685e9fb061256d6a6',
+              provider:
+                "https://mainnet.infura.io/v3/b00b2c2cc09c487685e9fb061256d6a6",
             },
           },
         }),
       },
       {
-        uri: 'w3://ens/ipfs.web3api.eth',
-        plugin: ipfsPlugin({ provider: 'https://ipfs.io' }),
-      }
+        uri: "w3://ens/ipfs.web3api.eth",
+        plugin: ipfsPlugin({ provider: "https://ipfs.io" }) as undefined,
+      },
     ],
   },
   publish: {
-    subdomain: '',
-    ipfs: '',
-    subdomainError: '',
+    subdomain: "",
+    ipfs: "",
+    subdomainError: "",
     subdomainLookupSuccess: false,
     subdomainRegisterSuccess: false,
     subdomainLoading: false,
     ipfsLoading: false,
-    ipfsError: '',
+    ipfsError: "",
     ipfsSuccess: false,
     showConnectModal: false,
     showSignInModal: false,
@@ -65,46 +66,46 @@ export const initialState: State = {
   search: {
     sortedApi: [],
   },
-}
+};
 
 type dappType = {
-  balance: string
-  address: string
-  wallet: { name: string }
-  network: number
-  web3?: ethers.providers.JsonRpcProvider
-  apis: APIData[]
-  github?: string
-  did?: string
-}
+  balance: string;
+  address: string;
+  wallet: { name: string };
+  network: number;
+  web3?: ethers.providers.JsonRpcProvider;
+  apis: APIData[];
+  github?: string;
+  did?: string;
+};
 
 type web3apiType = {
-  redirects: UriRedirect[]
-}
+  redirects: UriRedirect[];
+};
 
 type publishType = {
-  subdomain: string
-  ipfs: string
-  subdomainError: string
-  subdomainLookupSuccess: boolean
-  subdomainRegisterSuccess: boolean
-  subdomainLoading: boolean
-  ipfsLoading: boolean
-  ipfsError: string
-  ipfsSuccess: boolean
-  showConnectModal: boolean
-  showSignInModal: boolean
-  showSuccessModal: boolean
-  apiData: APIData | undefined
-  registrationStatus: number
-}
+  subdomain: string;
+  ipfs: string;
+  subdomainError: string;
+  subdomainLookupSuccess: boolean;
+  subdomainRegisterSuccess: boolean;
+  subdomainLoading: boolean;
+  ipfsLoading: boolean;
+  ipfsError: string;
+  ipfsSuccess: boolean;
+  showConnectModal: boolean;
+  showSignInModal: boolean;
+  showSuccessModal: boolean;
+  apiData: APIData | undefined;
+  registrationStatus: number;
+};
 
 type searchType = {
-  sortedApi: -1 | APIData[]
-}
+  sortedApi: -1 | APIData[];
+};
 
-export default initialState
-export type { dappType }
-export type { web3apiType }
-export type { publishType }
-export type { searchType }
+export default initialState;
+export type { dappType };
+export type { web3apiType };
+export type { publishType };
+export type { searchType };

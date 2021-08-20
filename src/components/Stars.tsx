@@ -1,31 +1,31 @@
 /** @jsxImportSource theme-ui **/
-import { Flex } from 'theme-ui'
+import { Flex } from "theme-ui";
 
 type BadgeProps = {
-  count: number
-  onDark?: boolean
-  large?: boolean
-  onClick?: () => void
-}
+  count: number;
+  onDark?: boolean;
+  large?: boolean;
+  onClick?: () => void;
+};
 
 const Stars = ({ count, onDark, large, onClick }: BadgeProps) => {
   return (
     <Flex
       onClick={onClick}
       className="stars"
-      sx={{ cursor: 'pointer', alignItems: 'center' }}
+      sx={{ cursor: "pointer", alignItems: "center" }}
     >
       <img
         className="star"
         src="/images/star.svg"
         sx={
           !large
-            ? { width: 'auto' }
+            ? { width: "auto" }
             : {
-                width: '1.125rem',
-                height: '1.125rem',
-                top: '-0.125rem',
-                left: '-0.125rem',
+                width: "1.125rem",
+                height: "1.125rem",
+                top: "-0.125rem",
+                left: "-0.125rem",
               }
         }
       />
@@ -34,26 +34,26 @@ const Stars = ({ count, onDark, large, onClick }: BadgeProps) => {
         sx={
           !large
             ? {
-                fontWeight: '600',
-                color: onDark ? 'w3OffWhite' : 'black',
+                fontWeight: "600",
+                color: onDark ? "w3OffWhite" : "black",
                 ml: 2,
-                fontSize: '1.25rem',
-                lineHeight: '1.5rem',
+                fontSize: "1.25rem",
+                lineHeight: "1.5rem",
               }
             : {
-                fontWeight: '700',
+                fontWeight: "700",
 
-                letterSpacing: '0rem',
-                color: onDark ? 'w3OffWhite' : 'black',
-                fontSize: '1.25rem',
-                lineHeight: '1.5rem',
+                letterSpacing: "0rem",
+                color: onDark ? "w3OffWhite" : "black",
+                fontSize: "1.25rem",
+                lineHeight: "1.5rem",
               }
         }
       >
         {count}
       </div>
     </Flex>
-  )
-}
+  );
+};
 
-export default Stars
+export default Stars;

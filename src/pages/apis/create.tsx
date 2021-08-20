@@ -1,80 +1,85 @@
 /** @jsxImportSource theme-ui **/
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
-import { Flex, Themed } from 'theme-ui'
-import Layout from '../../components/Layout'
-import CreateAPI from '../../components/tabs/CreateAPI'
-import PublishAPI from '../../components/tabs/PublishAPI'
-import Header from '../../components/Header'
-import BottomSpace from '../../components/BottomSpace'
+import Layout from "../../components/Layout";
+import CreateAPI from "../../components/tabs/CreateAPI";
+import PublishAPI from "../../components/tabs/PublishAPI";
+import Header from "../../components/Header";
+import BottomSpace from "../../components/BottomSpace";
+
+import { Flex, Themed } from "theme-ui";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 const CreateApi = () => {
-  const router = useRouter()
-  const [activeTab, setActiveTab] = useState<string | string[]>()
+  const router = useRouter();
+  const [activeTab, setActiveTab] = useState<string | string[]>();
 
   const handleTabClick = (e: React.BaseSyntheticEvent) => {
-    e.stopPropagation()
-    setActiveTab(e.target.classList[1])
-    router.push(router.pathname + '?activeTab=' + e.target.classList[1])
-  }
+    e.stopPropagation();
+    setActiveTab(e.target.classList[1]);
+    router.push(router.pathname + "?activeTab=" + e.target.classList[1]);
+  };
 
   useEffect(() => {
     if (router.query.activeTab && !activeTab) {
-      setActiveTab(router.query.activeTab)
+      setActiveTab(router.query.activeTab);
     }
-  }, [router.query.activeTab, activeTab])
+  }, [router.query.activeTab, activeTab]);
 
   useEffect(() => {
     if (router.isReady && !router.query.activeTab) {
-      router.push(router.pathname + '?activeTab=create')
+      router.push(router.pathname + "?activeTab=create");
     }
-  }, [router.isReady, router.query?.activeTab, router.pathname])
+  }, [router.isReady, router.query?.activeTab, router.pathname]);
 
   return (
     <Layout>
       <Flex>
         <main sx={{ pb: 5 }}>
-          <div className="contents" sx={{ maxWidth: 'calc(76.5rem + 112px)' }}>
-            <Header title={'Create a Web3API'} />
+          <div className="contents" sx={{ maxWidth: "calc(76.5rem + 112px)" }}>
+            <Header title={"Create a Web3API"} />
             <Flex
               className="tabs"
               onClick={handleTabClick}
               sx={{
-                '*': { cursor: 'pointer', mr: 2, mb: 4 },
-                '.tab': {
-                  textAlign: 'center',
-                  fontSize: '1rem',
-                  fontWeight: 'bold',
-                  lineHeight: '1.25rem',
-                  letterSpacing: '-0.025rem',
-                  pb: ' 1.125rem',
-                  color: 'text',
+                "*": { cursor: "pointer", mr: 2, mb: 4 },
+                ".tab": {
+                  textAlign: "center",
+                  fontSize: "1rem",
+                  fontWeight: "bold",
+                  lineHeight: "1.25rem",
+                  letterSpacing: "-0.025rem",
+                  pb: " 1.125rem",
+                  color: "text",
                   mb: 0,
-                  '&.active': {
-                    fontWeight: 'bold',
-                    color: 'w3darkGreen',
-                    borderBottom: '0.125rem solid',
-                    borderBottomColor: 'w3NavNeonHighlightTeal',
-                    '&:hover': {
-                      borderBottom: '0.125rem solid',
-                      borderBottomColor: 'w3NavNeonHighlightTeal',
+                  "&.active": {
+                    fontWeight: "bold",
+                    color: "w3darkGreen",
+                    borderBottom: "0.125rem solid",
+                    borderBottomColor: "w3NavNeonHighlightTeal",
+                    "&:hover": {
+                      borderBottom: "0.125rem solid",
+                      borderBottomColor: "w3NavNeonHighlightTeal",
                     },
                   },
-                  '&:hover': {
-                    borderBottom: '0.125rem solid',
-                    borderBottomColor: 'background',
+                  "&:hover": {
+                    borderBottom: "0.125rem solid",
+                    borderBottomColor: "background",
                   },
                 },
               }}
             >
               <Themed.h3
-                className={'tab create ' + (activeTab === 'create' ? 'active' : '')}
+                className={
+                  "tab create " + (activeTab === "create" ? "active" : "")
+                }
                 sx={{ flex: 1 }}
               >
                 Create
               </Themed.h3>
               <Themed.h3
-                className={'tab publish ' + (activeTab === 'publish' ? 'active' : '')}
+                className={
+                  "tab publish " + (activeTab === "publish" ? "active" : "")
+                }
                 sx={{ flex: 1 }}
               >
                 Publish
@@ -83,22 +88,22 @@ const CreateApi = () => {
             <div
               className="tab-content"
               sx={{
-                bg: 'white',
-                '> *': {
-                  px: '3.4375rem',
-                  pt: '5.625rem',
+                bg: "white",
+                "> *": {
+                  px: "3.4375rem",
+                  pt: "5.625rem",
                 },
               }}
             >
-              {activeTab === 'create' && <CreateAPI />}
-              {activeTab === 'publish' && <PublishAPI />}
+              {activeTab === "create" && <CreateAPI />}
+              {activeTab === "publish" && <PublishAPI />}
             </div>
             <BottomSpace />
           </div>
         </main>
       </Flex>
     </Layout>
-  )
-}
+  );
+};
 
-export default CreateApi
+export default CreateApi;

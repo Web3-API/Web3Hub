@@ -1,20 +1,20 @@
 /** @jsxImportSource theme-ui **/
-import { Flex } from 'theme-ui'
-import { Global } from '@emotion/react'
-import { useRouter } from 'next/router'
-import { Web3ApiProvider } from '@web3api/react'
-import Layout from '../../../components/Layout'
-import Navbar from '../../../components/Navbar'
-import Header from '../../../components/Header'
-import Playground from '../../../components/Playground'
+import Layout from "../../../components/Layout";
+import Navbar from "../../../components/Navbar";
+import Header from "../../../components/Header";
+import Playground from "../../../components/Playground";
+import { useGetAPIfromENSParamInURL } from "../../../hooks/ens/useGetAPIfromENS";
+import { useStateValue } from "../../../state/state";
+import Modal from "../../../components/Modal";
 
-import { useGetAPIfromENSParamInURL } from '../../../hooks/ens/useGetAPIfromENS'
-import { useStateValue } from '../../../state/state'
-import { useEffect } from 'react'
-import Modal from '../../../components/Modal'
+import { useEffect } from "react";
+import { Web3ApiProvider } from "@web3api/react";
+import { useRouter } from "next/router";
+import { Global } from "@emotion/react";
+import { Flex } from "theme-ui";
 
 const PlaygroundPage = () => {
-  const router = useRouter()
+  const router = useRouter();
   const [
     {
       web3api,
@@ -22,32 +22,35 @@ const PlaygroundPage = () => {
       publish: { showSignInModal },
     },
     dispatch,
-  ] = useStateValue()
-  const { data } = useGetAPIfromENSParamInURL()
+  ] = useStateValue();
+  const { data } = useGetAPIfromENSParamInURL();
 
-  if (router.asPath !== '/playground' && !router.asPath.includes('/playground/ens/')) {
-    router.push('/playground')
+  if (
+    router.asPath !== "/playground" &&
+    !router.asPath.includes("/playground/ens/")
+  ) {
+    void router.push("/playground");
   }
 
   useEffect(() => {
-    const previouslySelectedWallet = localStorage.getItem('selectedWallet')
+    const previouslySelectedWallet = localStorage.getItem("selectedWallet");
 
     if (!dapp.web3 && !previouslySelectedWallet) {
-      dispatch({ type: 'setShowSignInModal', payload: true })
+      dispatch({ type: "setShowSignInModal", payload: true });
     }
-  }, [dapp.web3])
+  }, [dapp.web3]);
   return (
     <Layout>
       <Flex>
         {showSignInModal && !dapp.web3 && (
-          <div sx={{ position: 'fixed', top: 0, left: 0, zIndex: 100000 }}>
+          <div sx={{ position: "fixed", top: 0, left: 0, zIndex: 100000 }}>
             <Modal
-              screen={'connect'}
+              screen={"connect"}
               noLeftShift
               close={() => {
-                dispatch({ type: 'setShowConnectModal', payload: false })
+                dispatch({ type: "setShowConnectModal", payload: false });
               }}
-            />{' '}
+            />{" "}
           </div>
         )}
         <Navbar />
@@ -66,13 +69,13 @@ const PlaygroundPage = () => {
         styles={(theme: any) => {
           return {
             body: {
-              background: theme.colors.w3shade0 + ' !important',
+              background: theme.colors.w3shade0 + " !important",
             },
-          }
+          };
         }}
       />
     </Layout>
-  )
-}
+  );
+};
 
-export default PlaygroundPage
+export default PlaygroundPage;

@@ -1,39 +1,39 @@
 /** @jsxImportSource theme-ui **/
-import { Flex, Themed } from 'theme-ui'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-import { useStateValue } from '../state/state'
-import axios from 'axios'
+import { useStateValue } from "../state/state";
+import Layout from "../components/Layout";
+import Navbar from "../components/Navbar";
+import BGWave from "../components/BGWave";
+import Header from "../components/Header";
+import { domain } from "../constants";
 
-import Layout from '../components/Layout'
-import Navbar from '../components/Navbar'
-import BGWave from '../components/BGWave'
-import Header from '../components/Header'
-import { domain } from '../constants'
+import axios from "axios";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { Flex, Themed } from "theme-ui";
 
-const Signin = () => {
-  const [, dispatch] = useStateValue()
-  const router = useRouter()
+export default (): unknown => {
+  const [, dispatch] = useStateValue();
+  const router = useRouter();
 
   useEffect(() => {
-    ;(async () => {
+    void (async () => {
       if (router.query.code) {
         const response = await axios.get(
           domain + `/api/auth/github/callback/${router.query.code}`,
           {
             withCredentials: true,
-          },
-        )
-        if ('access_token' in response.data) {
+          }
+        );
+        if ("access_token" in response.data) {
           dispatch({
-            type: 'SET_GITHUB_USER',
+            type: "SET_GITHUB_USER",
             payload: response.data.access_token,
-          })
+          });
         }
-        router.push(localStorage.getItem('w3hubLastURLb4Signin'))
+        void router.push(localStorage.getItem("w3hubLastURLb4Signin"));
       }
-    })()
-  }, [router.query])
+    })();
+  }, [router.query]);
   return (
     <Layout>
       <Flex>
@@ -43,7 +43,7 @@ const Signin = () => {
             <Header title="Browse APIs" />
             <section
               className="content"
-              sx={{ display: 'grid', placeItems: 'center', height: '50%' }}
+              sx={{ display: "grid", placeItems: "center", height: "50%" }}
             >
               <Themed.h1>Signing In...</Themed.h1>
             </section>
@@ -52,7 +52,5 @@ const Signin = () => {
       </Flex>
       <BGWave light />
     </Layout>
-  )
-}
-
-export default Signin
+  );
+};

@@ -1,10 +1,11 @@
-import { VercelRequest, VercelResponse } from '@vercel/node'
-import { User } from '../../../api/models/User'
+import { User } from "../../../api/models/User";
+
+import { VercelRequest, VercelResponse } from "@vercel/node";
 
 const md5 = require("md5");
 
 export default async (request: VercelRequest, response: VercelResponse) => {
-  if (request.method === 'POST') {
+  if (request.method === "POST") {
     const { did } = request.body;
     const hashedDid = md5(did);
     try {
@@ -19,4 +20,4 @@ export default async (request: VercelRequest, response: VercelResponse) => {
       });
     }
   }
-}
+};

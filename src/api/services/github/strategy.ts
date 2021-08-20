@@ -14,4 +14,3 @@ export const ghCallback = async (accessToken: string) => {
     throw new Error(e);
   }
 };
-

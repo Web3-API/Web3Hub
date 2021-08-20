@@ -8,6 +8,7 @@ export interface ApiData {
   pointerUris: string[];
   ownerId?: string;
 }
+
 export interface UserData {
   id: number;
   username?: string;
@@ -19,7 +20,7 @@ export interface UserData {
 export interface Authentication {
   github?: {
     accessToken?: string;
-    [k: string]: unknown;
+    [k: string]: unknown; // eslint-disable-line
   };
-  [k: string]: unknown;
+  [k: string]: unknown; // eslint-disable-line
 }

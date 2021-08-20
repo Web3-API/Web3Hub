@@ -2,7 +2,7 @@
 // import { colors } from '@material-ui/core';
 // import { createMuiTheme } from '@material-ui/core/styles';
 // import { hexToCSSFilter, HexToCssConfiguration } from 'hex-to-css-filter/dist/es2015';
- 
+
 // const config: HexToCssConfiguration = {
 //   acceptanceLossPercentage: 1,
 //   maxChecks: 10,
@@ -16,18 +16,18 @@
 // * Primary Green Gradient:    74DD9F - 27C69F - 120 Degrees
 // * Secondary Blue Gradient :  1B5FED - 1B87ED - 179 Degrees
 // * Terciary Yellow Gradient : FFC272 - FFE272 - 0 Degrees
-// * Wrap Gradient :            878787 - FFFFFF - 127 Degrees - 0.35 Transparency 
+// * Wrap Gradient :            878787 - FFFFFF - 127 Degrees - 0.35 Transparency
 // * Black Background :         231F20
 // * White Background :         FFFFFF
-// ** 
+// **
 
 export const polywrapPalette = {
   primary: {
-    gradient: 'linear-gradient(to right, #74DD9F 20%, #000000, 20%)',
+    gradient: "linear-gradient(to right, #74DD9F 20%, #000000, 20%)",
     start: "#74DD9F",
     mid: "#4ED29F",
     end: "#27C69F",
-    direction: '120deg',
+    direction: "120deg",
   },
   secondary: {
     start: "#1B5FED",
@@ -36,13 +36,13 @@ export const polywrapPalette = {
     direction: 179,
   },
   tertiary: {
-    gradient: 'linear-gradient(to right, #FFC272, #FFE272)',
+    gradient: "linear-gradient(to right, #FFC272, #FFE272)",
     start: "#FFC272",
     end: "#FFE272",
     direction: 0,
   },
   wrapGradient: {
-    gradient: 'linear-gradient(0deg, #000000 35%, #FFFFFF 35%)',
+    gradient: "linear-gradient(0deg, #000000 35%, #FFFFFF 35%)",
     start: "#878787",
     end: "#FFFFFF",
     direction: 0,
@@ -50,22 +50,21 @@ export const polywrapPalette = {
   },
   blackBackground: "#000000",
   whiteBackground: "#FFFFFF",
-}
-
+};
 
 // export const theme = createMuiTheme({
 //   palette: {
 //     primary: {
 //       // sets background color
-//       main: polywrapPalette.blackBackground, 
+//       main: polywrapPalette.blackBackground,
 //     },
 //     secondary: {
 //       main: polywrapPalette.primary.start,
 //     },
 //     text: {
-//       primary: polywrapPalette.primary.mid,   
+//       primary: polywrapPalette.primary.mid,
 //       secondary: polywrapPalette.whiteBackground
-    
+
 //     }
 //   },
 //   typography: {
@@ -95,7 +94,7 @@ export const polywrapPalette = {
 //     MuiTextField: {
 //       root: {
 //         border: polywrapPalette.wrapGradient.gradient,
-//         borderRadius: 4, 
+//         borderRadius: 4,
 //         backgroundColor: polywrapPalette.primary.end,
 //         '& .MuiInput-underline:before': {
 //           borderBottomColor: 'none',
@@ -117,12 +116,12 @@ export const polywrapPalette = {
 //         //font color
 //         color: polywrapPalette.terciary.start,
 //         //bg color
-//         backgroundColor: "#333333", 
+//         backgroundColor: "#333333",
 //         //borders
 //         border: 'solid 1px ' + polywrapPalette.wrapGradient.start,
 //         borderColor: polywrapPalette.primary.end,
 //         borderRadius: 4,
-        
+
 //         "& $notchedOutline": {
 //           borderWidth: 0
 //         },
@@ -161,11 +160,10 @@ export const polywrapPalette = {
 //   }
 // });
 
-
 // export const filters = {
-//   // sets color of Launch Partners when idle 
+//   // sets color of Launch Partners when idle
 //   textSecondary: getFilter(polywrapPalette.wrapGradient.start),
 
 //   // sets color for Launch Partners on-hover
-//   secondary: getFilter(polywrapPalette.terciary.start) 
+//   secondary: getFilter(polywrapPalette.terciary.start)
 // };

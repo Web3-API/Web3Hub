@@ -1,28 +1,40 @@
 /** @jsxImportSource theme-ui **/
-import { Themed } from 'theme-ui'
-import Editor, { Monaco, OnChange } from '@monaco-editor/react'
+import solarizedDark from "../theme/Solarized-dark.json";
+
+import { Themed } from "theme-ui";
+import Editor, { Monaco, OnChange } from "@monaco-editor/react";
 
 // https://github.com/brijeshb42/monaco-themes/tree/master/themes
-import solarizedDark from '../theme/Solarized-dark.json'
-import { MouseEventHandler } from 'react'
+import { MouseEventHandler } from "react";
 
 type GQLCodeBlockProps = {
-  title?: string
-  readOnly?: boolean
-  height?: string
-  value: string | string[]
-  onClick?: MouseEventHandler<HTMLDivElement>
-  handleEditorChange?: OnChange
-}
+  title?: string;
+  readOnly?: boolean;
+  height?: string;
+  value: string | string[];
+  onClick?: MouseEventHandler<HTMLDivElement>;
+  handleEditorChange?: OnChange;
+};
 
-const GQLCodeBlock = ({ title, readOnly, height = '200px', value, handleEditorChange, onClick }: GQLCodeBlockProps) => {
+const GQLCodeBlock = ({
+  title,
+  readOnly,
+  height = "200px",
+  value,
+  handleEditorChange,
+  onClick,
+}: GQLCodeBlockProps) => {
   const handleEditorWillMount = (monaco: Monaco) => {
-    monaco.editor.defineTheme('solarizedDark', solarizedDark);
-    monaco.editor.setTheme('solarizedDark');
-  } 
+    monaco.editor.defineTheme("solarizedDark", solarizedDark);
+    monaco.editor.setTheme("solarizedDark");
+  };
   return (
     <div className="GQLCodeBlock-wrap" onClick={onClick}>
-      {title ? <Themed.h5 sx={{ m: 0, py: 2, px: '.75rem', bg: 'white' }}>{title}</Themed.h5> : null}
+      {title ? (
+        <Themed.h5 sx={{ m: 0, py: 2, px: ".75rem", bg: "white" }}>
+          {title}
+        </Themed.h5>
+      ) : null}
       <Editor
         theme="solarizedDark"
         options={{
@@ -30,7 +42,7 @@ const GQLCodeBlock = ({ title, readOnly, height = '200px', value, handleEditorCh
             enabled: false,
           },
           scrollBeyondLastLine: false,
-          readOnly: readOnly
+          readOnly: readOnly,
         }}
         beforeMount={handleEditorWillMount}
         onChange={handleEditorChange}
@@ -39,7 +51,7 @@ const GQLCodeBlock = ({ title, readOnly, height = '200px', value, handleEditorCh
         defaultValue={value.toString()}
       />
     </div>
-  )
-}
+  );
+};
 
-export default GQLCodeBlock
+export default GQLCodeBlock;

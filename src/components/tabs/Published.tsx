@@ -1,15 +1,16 @@
 /** @jsxImportSource theme-ui **/
-import { Flex, Button, Themed } from 'theme-ui'
-import { useRouter } from 'next/router'
-import { APIData } from '../../hooks/ens/useGetAPIfromENS'
-import ApiGrid from '../ApiGrid'
+import { APIData } from "../../hooks/ens/useGetAPIfromENS";
+import ApiGrid from "../ApiGrid";
+
+import { Flex, Button, Themed } from "theme-ui";
+import { useRouter } from "next/router";
 
 interface PublishedProps {
-  apis: APIData[]
+  apis: APIData[];
 }
 
 const Published = ({ apis }: PublishedProps) => {
-  const router = useRouter()
+  const router = useRouter();
 
   return apis.length ? (
     <ApiGrid apis={apis} />
@@ -17,20 +18,20 @@ const Published = ({ apis }: PublishedProps) => {
     <Flex
       className="published"
       sx={{
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
       }}
     >
       <img src="/images/thinking-emoji.svg" alt="thinking" sx={{ mb: 4 }} />
       <Themed.h5
         sx={{
-          fontFamily: 'Montserrat',
-          fontSize: '1.25rem',
-          lineHeight: '1.75rem',
-          textAlign: 'center',
-          letterSpacing: '-0.01em',
-          color: 'text',
+          fontFamily: "Montserrat",
+          fontSize: "1.25rem",
+          lineHeight: "1.75rem",
+          textAlign: "center",
+          letterSpacing: "-0.01em",
+          color: "text",
         }}
       >
         Looks like you did not publish an API yet!
@@ -38,14 +39,14 @@ const Published = ({ apis }: PublishedProps) => {
       <Button
         variant="primaryLarge"
         onClick={() => {
-          router.push('/apis/create?activeTab=create')
+          router.push("/apis/create?activeTab=create");
         }}
-        sx={{ display: 'inline-block', ml: 3, p: '1.5rem', px: '2.5rem' }}
+        sx={{ display: "inline-block", ml: 3, p: "1.5rem", px: "2.5rem" }}
       >
         <span>Create New API</span>
       </Button>
     </Flex>
-  )
-}
+  );
+};
 
-export default Published
+export default Published;

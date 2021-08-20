@@ -1,18 +1,18 @@
-import { getDB } from '../db'
+import { getDB } from "../db";
 
-const { db } = getDB()
+const { db } = getDB();
 
 export class Organization {
   public static async get(orgId: number) {
-    const connection = await db.connect()
+    const connection = await db.connect();
     try {
-      const organization = await connection.oneOrNone('')
-      return organization
+      const organization = await connection.oneOrNone("");
+      return organization;
     } catch (e) {
-      console.log('Error on method: Organization.get() -> ', e.message)
-      throw new Error(e)
+      console.log("Error on method: Organization.get() -> ", e.message);
+      throw new Error(e);
     } finally {
-      connection.done()
+      connection.done();
     }
   }
 }

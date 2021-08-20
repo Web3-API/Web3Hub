@@ -1,12 +1,12 @@
 /** @jsxImportSource theme-ui **/
 
 type BGWaveProps = {
-  dark?: boolean
-  light?: boolean
-}
+  dark?: boolean;
+  light?: boolean;
+};
 
 const BGWave = ({ dark, light }: BGWaveProps) => {
-  let color = dark ? 'dark' : light ? 'light' : 'light'
+  const color = dark ? "dark" : light ? "light" : "light";
   return (
     <style>
       {`
@@ -20,7 +20,7 @@ const BGWave = ({ dark, light }: BGWaveProps) => {
           },
       `}
     </style>
-  )
-}
+  );
+};
 
-export default BGWave
+export default BGWave;

@@ -1,31 +1,32 @@
 /** @jsxImportSource theme-ui **/
-import { Flex, Select } from 'theme-ui'
-import { useState, useEffect } from 'react'
-import { useStateValue } from '../state/state'
-import SearchBox from './SearchBox'
-import { APIData } from '../hooks/ens/useGetAPIfromENS'
+import { useStateValue } from "../state/state";
+import SearchBox from "./SearchBox";
+import { APIData } from "../hooks/ens/useGetAPIfromENS";
+
+import { useState, useEffect } from "react";
+import { Flex, Select } from "theme-ui";
 
 const SortNav = () => {
-  const [{ dapp }, dispatch] = useStateValue()
+  const [{ dapp }, dispatch] = useStateValue();
 
-  const [searchOptions, setsearchOptions] = useState(dapp.apis)
+  const [searchOptions, setsearchOptions] = useState(dapp.apis);
   const handleSearchValuesChange = (value: APIData[]) => {
-    if(value.length === 0) {
+    if (value.length === 0) {
       dispatch({
-        type: 'sortSelectApi',
-        payload: -1
-      })  
+        type: "sortSelectApi",
+        payload: -1,
+      });
     } else {
       dispatch({
-        type: 'sortSelectApi',
-        payload: value
-      })
+        type: "sortSelectApi",
+        payload: value,
+      });
     }
-  }
+  };
 
   useEffect(() => {
-    setsearchOptions(dapp.apis)
-  }, [dapp.apis])
+    setsearchOptions(dapp.apis);
+  }, [dapp.apis]);
 
   return (
     <nav>
@@ -35,7 +36,7 @@ const SortNav = () => {
             detachedResults
             large
             searchBy="name"
-            placeholder={'Search'}
+            placeholder={"Search"}
             labelField="name"
             valueField="name"
             options={searchOptions}
@@ -47,24 +48,24 @@ const SortNav = () => {
         <br />
         <Flex
           sx={{
-            justifyContent: 'space-between',
+            justifyContent: "space-between",
             flex: 1,
-            alignItems: 'center',
-            color: 'w3darkGreen',
-            fontFamily: 'Montserrat',
-            fontSize: '0.9375rem',
-            fontWeight: '500',
-            lineHeight: '1.125rem',
-            letterSpacing: '-0.025rem',
-            textAlign: 'right',
-            pb: 2
+            alignItems: "center",
+            color: "w3darkGreen",
+            fontFamily: "Montserrat",
+            fontSize: "0.9375rem",
+            fontWeight: "500",
+            lineHeight: "1.125rem",
+            letterSpacing: "-0.025rem",
+            textAlign: "right",
+            pb: 2,
           }}
         >
           <span>
             <b>{dapp.apis.length}</b>&nbsp;API's
           </span>
           <div>
-            <Select sx={{ minWidth: '8rem', border: 'none' }}>
+            <Select sx={{ minWidth: "8rem", border: "none" }}>
               <option value="HighestRated">Higest Rated</option>
               <option value="MostRecent">Most Recent</option>
               <option value="Alphabetical">Alphabetical</option>
@@ -73,7 +74,7 @@ const SortNav = () => {
         </Flex>
       </form>
     </nav>
-  )
-}
+  );
+};
 
-export default SortNav
+export default SortNav;

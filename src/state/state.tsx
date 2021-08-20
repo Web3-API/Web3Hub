@@ -1,18 +1,19 @@
-import React, { createContext, Dispatch, useContext, useReducer } from 'react'
-import { StateAction } from './action'
-import initialState, { State } from './initialState'
-import reducer from './reducer'
+import { StateAction } from "./action";
+import initialState, { State } from "./initialState";
+import reducer from "./reducer";
 
-export const StateContext = createContext<[State, Dispatch<StateAction>]>(null)
+import React, { createContext, Dispatch, useContext, useReducer } from "react";
 
-export const StateProvider = ({ children }: { children: React.ReactNode }) => {
-  const [state, dispatch] = useReducer(reducer, initialState)
+export const StateContext = createContext<[State, Dispatch<StateAction>]>(null); // eslint-disable-line
+
+export const StateProvider = ({ children }: { children: React.ReactNode }) => { // eslint-disable-line
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
     <StateContext.Provider value={[state, dispatch]}>
       {children}
     </StateContext.Provider>
-  )
-}
+  );
+};
 
-export const useStateValue = () => useContext(StateContext)
+export const useStateValue = () => useContext(StateContext); // eslint-disable-line

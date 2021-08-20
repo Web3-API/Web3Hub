@@ -1,14 +1,17 @@
 /** @jsxImportSource theme-ui **/
-import { Flex } from 'theme-ui'
-import Link from 'next/link'
+import { Flex } from "theme-ui";
+import Link from "next/link";
 
 const Pagination = () => {
   return (
-    <Flex className="pagination" sx={{ flex: 1, justifyContent: 'center', mt: 5 }}>
+    <Flex
+      className="pagination"
+      sx={{ flex: 1, justifyContent: "center", mt: 5 }}
+    >
       <Link href="#">
-        <a>{'<'}</a>
+        <a>{"<"}</a>
       </Link>
-      <ol sx={{ display: 'flex', '*': { mx: 1 } }}>
+      <ol sx={{ display: "flex", "*": { mx: 1 } }}>
         <li>
           <Link href="#">
             <a>1</a>
@@ -42,10 +45,10 @@ const Pagination = () => {
         </li>
       </ol>
       <Link href="#">
-        <a>{'>'}</a>
+        <a>{">"}</a>
       </Link>
     </Flex>
-  )
-}
+  );
+};
 
-export default Pagination
+export default Pagination;
