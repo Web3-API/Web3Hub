@@ -6,7 +6,7 @@ import Playground from "../../components/Playground";
 import { useStateValue } from "../../state/state";
 
 import { Web3ApiProvider } from "@web3api/react";
-import { Global } from "@emotion/react";
+import { Global } from "@emotion/react"; // eslint-disable-line
 import { Flex } from "theme-ui";
 
 const PlaygroundPage = () => {

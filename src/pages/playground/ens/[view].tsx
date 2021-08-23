@@ -10,7 +10,7 @@ import Modal from "../../../components/Modal";
 import { useEffect } from "react";
 import { Web3ApiProvider } from "@web3api/react";
 import { useRouter } from "next/router";
-import { Global } from "@emotion/react";
+import { Global } from "@emotion/react"; // eslint-disable-line
 import { Flex } from "theme-ui";
 
 const PlaygroundPage = () => {

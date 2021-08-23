@@ -4,7 +4,7 @@ import { useStateValue } from "../state/state";
 import { domain } from "../constants";
 
 import { useEffect } from "react";
-import { Global } from "@emotion/react";
+import { Global } from "@emotion/react"; // eslint-disable-line
 import useSWR from "swr";
 
 type LayoutProps = {

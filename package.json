@@ -21,7 +21,6 @@
     "@ceramicnetwork/http-client": "1.0.7",
     "@ceramicstudio/idx": "0.12.1",
     "@ceramicstudio/idx-tools": "0.11.0",
-    "@emotion/react": "^11.4.1",
     "@ensdomains/ensjs": "2.0.1",
     "@ethersproject/basex": "^5.4.0",
     "@monaco-editor/react": "^4.1.3",
