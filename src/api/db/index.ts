@@ -2,7 +2,7 @@ import * as pgLib from "pg-promise";
 
 // Inspired from: https://stackoverflow.com/questions/34382796/where-should-i-initialize-pg-promise
 interface IDatabaseScope {
-  db: pgLib.IDatabase<any>;
+  db: pgLib.IDatabase<any>; // eslint-disable-line
   pgp: pgLib.IMain;
 }
 
@@ -27,10 +27,10 @@ export function getDB(): IDatabaseScope {
 // generic singleton creator:
 export function createSingleton<T>(name: string, create: () => T): T {
   const s = Symbol.for(name);
-  let scope = (global as any)[s];
+  let scope = (global as any)[s]; // eslint-disable-line
   if (!scope) {
     scope = { ...create() };
-    (global as any)[s] = scope;
+    (global as any)[s] = scope; // eslint-disable-line
   }
   return scope;
 }

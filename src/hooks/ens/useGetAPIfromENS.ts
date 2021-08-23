@@ -17,7 +17,7 @@ export interface APIData {
 
 export const useGetAPIfromENSParamInURL = () => {
   const router = useRouter();
-  const [error, setError] = useState<any>();
+  const [error, setError] = useState<any>(); // eslint-disable-line
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<APIData>();
 
@@ -38,7 +38,7 @@ export const useGetAPIfromENSParamInURL = () => {
 
   useEffect(() => {
     if (router.isReady) {
-      fetchApiDetails();
+      void fetchApiDetails();
     }
   }, [router.isReady]);
   return { error, isLoading, data, fetchApiDetails };

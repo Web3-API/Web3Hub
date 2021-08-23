@@ -5,7 +5,7 @@ import { ApiData } from "../../../api/models/types";
 
 import { VercelRequest, VercelResponse } from "@vercel/node";
 
-const md5 = require("md5");
+const md5 = require("md5"); // eslint-disable-line
 
 export default withValidatePublishBody(
   async (request: VercelRequest, response: VercelResponse) => {

@@ -7,12 +7,12 @@ import { ethers } from "ethers";
 import { useCallback, useState } from "react";
 import { namehash } from "ethers/lib/utils";
 
-const contentHash = require("content-hash");
+const contentHash = require("content-hash"); // eslint-disable-line
 export const MAIN_DOMAIN_NAMEHASH = namehash(MAIN_DOMAIN);
 
 export const useCreateSubdomain = () => {
   const [{ dapp }] = useStateValue();
-  const [error, setError] = useState<any>();
+  const [error, setError] = useState<any>(); // eslint-disable-line
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState(0);
   const [data, setData] = useState<ethers.providers.TransactionReceipt>();

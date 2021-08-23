@@ -2,7 +2,8 @@
 import solarizedDark from "../theme/Solarized-dark.json";
 
 import { Themed } from "theme-ui";
-import Editor, { Monaco, OnChange } from "@monaco-editor/react";
+// eslint-disable-next-line import/order
+import Editor, { OnChange, Monaco } from "@monaco-editor/react";
 
 // https://github.com/brijeshb42/monaco-themes/tree/master/themes
 import { MouseEventHandler } from "react";

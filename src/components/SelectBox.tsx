@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui **/
-import { APIData } from "../hooks/ens/useGetAPIfromENS";
 
 import RDS from "react-dropdown-select";
 

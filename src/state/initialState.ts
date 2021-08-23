@@ -7,12 +7,12 @@ import { ipfsPlugin } from "@web3api/ipfs-plugin-js";
 import { ethereumPlugin } from "@web3api/ethereum-plugin-js";
 
 export interface State {
-  dapp: dappType;
+  dapp: DappType;
   web3api: {
     plugins: PluginRegistration[];
   };
-  publish: publishType;
-  search: searchType;
+  publish: PublishType;
+  search: SearchType;
 }
 
 export const initialState: State = {
@@ -68,7 +68,7 @@ export const initialState: State = {
   },
 };
 
-type dappType = {
+type DappType = {
   balance: string;
   address: string;
   wallet: { name: string };
@@ -79,11 +79,11 @@ type dappType = {
   did?: string;
 };
 
-type web3apiType = {
+type Web3apiType = {
   redirects: UriRedirect[];
 };
 
-type publishType = {
+type PublishType = {
   subdomain: string;
   ipfs: string;
   subdomainError: string;
@@ -100,12 +100,12 @@ type publishType = {
   registrationStatus: number;
 };
 
-type searchType = {
+type SearchType = {
   sortedApi: -1 | APIData[];
 };
 
 export default initialState;
-export type { dappType };
-export type { web3apiType };
-export type { publishType };
-export type { searchType };
+export type { DappType };
+export type { Web3apiType };
+export type { PublishType };
+export type { SearchType };

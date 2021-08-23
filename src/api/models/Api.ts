@@ -1,3 +1,6 @@
+/* eslint-disable */
+// This file will be removed
+
 import { getDB } from "../db";
 import { ApiData } from "./types";
 

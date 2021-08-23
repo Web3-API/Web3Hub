@@ -2,7 +2,7 @@ import { cloudFlareGateway } from "../../constants";
 
 import axios from "axios";
 
-const yaml = require("js-yaml");
+const yaml = require("js-yaml"); // eslint-disable-line
 
 export default async function getMetaDataFromPackageHash(hash: string) {
   let ipfsDataFromJSON = null;

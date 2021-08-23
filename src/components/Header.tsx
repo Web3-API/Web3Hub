@@ -1,13 +1,13 @@
 /** @jsxImportSource theme-ui **/
+import ArrowBack from "../../public/images/arrow-back.svg";
+import onboardInit from "../utils/onboardInit";
+import { useStateValue } from "../state/state";
+
 import { useEffect, useState } from "react";
 import { Flex, Themed } from "theme-ui";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-
 const SignInArea = dynamic(() => import("./SignInArea"), { ssr: false });
-import ArrowBack from "../../public/images/arrow-back.svg";
-import onboardInit from "../utils/onboardInit";
-import { useStateValue } from "../state/state";
 
 type HeaderProps = {
   title?: string;
@@ -17,8 +17,8 @@ type HeaderProps = {
 
 const Header = ({ title, onDark, backNav }: HeaderProps) => {
   const router = useRouter();
-  const [{ dapp }, dispatch] = useStateValue();
-  const [onboard, setOnboard] = useState<any>();
+  const [{ dapp }, dispatch] = useStateValue(); // eslint-disable-line
+  const [onboard, setOnboard] = useState<any>(); // eslint-disable-line
 
   useEffect(() => {
     const onboard = onboardInit(dispatch);

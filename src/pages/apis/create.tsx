@@ -16,7 +16,7 @@ const CreateApi = () => {
   const handleTabClick = (e: React.BaseSyntheticEvent) => {
     e.stopPropagation();
     setActiveTab(e.target.classList[1]);
-    router.push(router.pathname + "?activeTab=" + e.target.classList[1]);
+    void router.push(router.pathname + "?activeTab=" + e.target.classList[1]);
   };
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const CreateApi = () => {
 
   useEffect(() => {
     if (router.isReady && !router.query.activeTab) {
-      router.push(router.pathname + "?activeTab=create");
+      void router.push(router.pathname + "?activeTab=create");
     }
   }, [router.isReady, router.query?.activeTab, router.pathname]);
 

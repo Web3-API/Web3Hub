@@ -4,7 +4,7 @@ import { networks } from "../../../utils/networks";
 import { providers } from "ethers";
 import ENS, { getEnsAddress } from "@ensdomains/ensjs";
 
-const { helpers } = require("content-hash");
+const { helpers } = require("content-hash"); // eslint-disable-line
 
 interface CheckContentResponse {
   valid: boolean;

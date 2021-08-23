@@ -2,7 +2,7 @@ import { User } from "../../../../../api/models/User";
 
 import { VercelRequest, VercelResponse } from "@vercel/node";
 
-const md5 = require("md5");
+const md5 = require("md5"); // eslint-disable-line
 
 export default async (request: VercelRequest, response: VercelResponse) => {
   if (request.method === "GET") {

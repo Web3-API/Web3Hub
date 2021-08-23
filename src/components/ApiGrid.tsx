@@ -55,7 +55,7 @@ const ApiGrid = ({ apis, main }: ApiGridProps) => {
             <Button
               variant="primaryLarge"
               onClick={() => {
-                router.push("/apis/create?activeTab=create");
+                void router.push("/apis/create?activeTab=create");
               }}
               sx={{ display: "inline-block", ml: 3, mt: 4 }}
             >

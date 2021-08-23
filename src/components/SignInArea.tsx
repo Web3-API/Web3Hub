@@ -220,8 +220,8 @@ const SignInArea = ({ onDark }: SignInAreaProps) => {
             }
             onClick={() => {
               router.pathname !== "/apis/create"
-                ? router.push("/apis/create?activeTab=create")
-                : router.push("/");
+                ? void router.push("/apis/create?activeTab=create")
+                : void router.push("/");
             }}
             sx={{ display: "inline-block", ml: 3 }}
           >

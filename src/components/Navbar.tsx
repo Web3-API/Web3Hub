@@ -3,13 +3,12 @@ import APIs from "../../public/images/apis.svg";
 import PlaygroundImg from "../../public/images/playground.svg";
 import Doc from "../../public/images/doc.svg";
 
-import { Flex, useThemeUI } from "theme-ui";
+import { Flex } from "theme-ui";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 const Navbar = () => {
   const router = useRouter();
-  const { theme } = useThemeUI();
   return (
     <nav
       role="nav"
@@ -91,7 +90,7 @@ const Navbar = () => {
                   <APIs />
                   <span sx={{ height: 2 }}>&nbsp;</span>
                   <span className="text-nav" sx={{ color: "w3TextNavTeal" }}>
-                    API's
+                    API&apos;s
                   </span>
                 </a>
               </Link>
@@ -116,6 +115,7 @@ const Navbar = () => {
                 className="text-nav"
                 href="https://web3api.dev"
                 target="_BLANK"
+                rel="noreferrer"
               >
                 <Doc />
                 <span>&nbsp;</span>
@@ -138,6 +138,7 @@ const Navbar = () => {
               textDecoration: "underline",
             },
           }}
+          rel="noreferrer"
         >
           Feedback
         </a>

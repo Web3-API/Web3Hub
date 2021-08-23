@@ -6,8 +6,8 @@ interface OrganizationsDTO {
   login: string;
   description: string;
   id: string;
-  avatar_url: string;
-  repos_url: string;
+  avatar_url: string; // eslint-disable-line
+  repos_url: string; // eslint-disable-line
 }
 
 export interface OrganizationData {
@@ -35,7 +35,7 @@ export const fetchOrganizations = async (token: string) => {
   try {
     const options = {
       headers: {
-        Authorization: `token ${token}`,
+        Authorization: `token ${token}`, // eslint-disable-line
       },
     };
     const response = await axios.get(GITHUB_API_DOMAIN + "/user/orgs", options);

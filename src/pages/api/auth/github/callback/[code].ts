@@ -6,15 +6,15 @@ import axios from "axios";
 export default async (request: VercelRequest, response: VercelResponse) => {
   if (request.method === "GET") {
     const data = {
-      client_id: process.env.GITHUB_CLIENT_ID,
-      client_secret: process.env.GITHUB_CLIENT_SECRET,
+      client_id: process.env.GITHUB_CLIENT_ID, // eslint-disable-line
+      client_secret: process.env.GITHUB_CLIENT_SECRET, // eslint-disable-line
       code: request.query.code,
     };
 
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
+        Accept: "application/json", // eslint-disable-line
       },
     };
 

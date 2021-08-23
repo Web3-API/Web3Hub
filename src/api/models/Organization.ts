@@ -3,7 +3,7 @@ import { getDB } from "../db";
 const { db } = getDB();
 
 export class Organization {
-  public static async get(orgId: number) {
+  public static async get(_: number) {
     const connection = await db.connect();
     try {
       const organization = await connection.oneOrNone("");

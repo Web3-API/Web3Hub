@@ -23,8 +23,8 @@ import { QueryApiResult } from "@web3api/client-js";
 import { OnChange } from "@monaco-editor/react";
 import { useWeb3ApiQuery } from "@web3api/react";
 import { useRouter } from "next/router";
-import React, { useRef, useEffect, useState } from "react";
-import { Flex, Button, Themed, Field } from "theme-ui";
+import React, { useEffect, useState } from "react";
+import { Flex, Button, Themed } from "theme-ui";
 
 type PlaygroundProps = {
   api?: APIData;
@@ -53,7 +53,7 @@ const Playground = ({ api }: PlaygroundProps) => {
   const [structuredschema, setstructuredschema] = useState<StructuredSchema>();
 
   const [clientresponded, setclientresponed] =
-    useState<QueryApiResult<Record<string, any>>>();
+    useState<QueryApiResult<Record<string, any>>>(); // eslint-disable-line
 
   const [customquerytext, setcustomquerytext] = useState("");
 
@@ -72,7 +72,7 @@ const Playground = ({ api }: PlaygroundProps) => {
     query: selectedMethod,
   });
 
-  function handleShowSchema(e: React.BaseSyntheticEvent) {
+  function handleShowSchema(_: React.BaseSyntheticEvent) {
     return setshowschema(!showschema);
   }
 
@@ -94,7 +94,9 @@ const Playground = ({ api }: PlaygroundProps) => {
   const handleVariableChanges = (e: string) => {
     try {
       setformVarsToSubmit(JSON.parse(e));
-    } catch (error) {}
+    } catch (error) {
+      // do nothing ?
+    }
   };
 
   function handleClearBtnClick() {
@@ -110,12 +112,8 @@ const Playground = ({ api }: PlaygroundProps) => {
   };
 
   async function exec() {
-    try {
-      const response = await execute(formVarsToSubmit);
-      setclientresponed(response);
-    } catch (error) {
-      throw error;
-    }
+    const response = await execute(formVarsToSubmit);
+    setclientresponed(response);
   }
 
   useEffect(() => {
@@ -153,7 +151,7 @@ const Playground = ({ api }: PlaygroundProps) => {
       setloadingPackageContents(false);
     }
     if (loadingPackageContents && api) {
-      go();
+      void go();
     }
   }, [loadingPackageContents, api]);
 
@@ -213,9 +211,11 @@ const Playground = ({ api }: PlaygroundProps) => {
               setsearchboxvalues(values);
               if (values.length > 0) {
                 if (values[0]?.pointerUris.length > 0) {
-                  router.push("/playground/ens/" + values[0].pointerUris[0]);
+                  void router.push(
+                    "/playground/ens/" + values[0].pointerUris[0]
+                  );
                 } else {
-                  router.push(
+                  void router.push(
                     "/playground/ipfs/" +
                       stripIPFSPrefix(values[0].locationUri[0])
                   );

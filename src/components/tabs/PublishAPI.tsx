@@ -9,7 +9,6 @@ import Modal from "../Modal";
 import ProgressSteps from "../ProgressSteps";
 import { useAuth } from "../../hooks/useAuth";
 
-import axios from "axios";
 import { Input, Flex, Button, Themed } from "theme-ui";
 import {
   ChangeEventHandler,
@@ -75,7 +74,7 @@ const PublishAPI = () => {
     dispatch({ type: "setsubdomainError", payload: "" });
     dispatch({ type: "setsubdomainLookupSuccess", payload: false });
     if (e.target.value !== "") {
-      checkForENSAvailability(e.target.value);
+      await checkForENSAvailability(e.target.value);
     }
   };
 
@@ -86,7 +85,7 @@ const PublishAPI = () => {
     if (dapp.address === undefined) {
       dispatch({ type: "setShowConnectModal", payload: true });
     } else {
-      executeCreateSubdomain(publish.subdomain, publish.ipfs);
+      await executeCreateSubdomain(publish.subdomain, publish.ipfs);
     }
   };
 
@@ -153,7 +152,7 @@ const PublishAPI = () => {
 
   useEffect(() => {
     if (publish.subdomain !== "") {
-      checkForENSAvailability(publish.subdomain);
+      void checkForENSAvailability(publish.subdomain);
     }
   }, [dapp.address]);
 
@@ -165,12 +164,14 @@ const PublishAPI = () => {
 
   useEffect(() => {
     if (publish.subdomain !== "" && publish.ipfs !== "") {
-      executeCreateSubdomain(publish.subdomain, publish.ipfs);
+      void executeCreateSubdomain(publish.subdomain, publish.ipfs);
     }
   }, [dapp.address]);
 
   useEffect(() => {
-    if (!dapp.did) authenticate();
+    if (!dapp.did) {
+      void authenticate();
+    }
   }, [dapp.did]);
 
   const ipfsClasses = publish.ipfsLoading
@@ -378,6 +379,7 @@ const PublishAPI = () => {
                   href="https://www.moonpay.com/"
                   target="_BLANK"
                   sx={{ color: "#509DAC", textDecoration: "none" }}
+                  rel="noreferrer"
                 >
                   Purcahse with your bank or card here
                 </a>

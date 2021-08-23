@@ -14,7 +14,9 @@ export default async (request: VercelRequest) => {
           api.pointerUris,
           api.locationUri
         );
-        if (!valid) Api.deactivate(api.id);
+        if (!valid) {
+          await Api.deactivate(api.id);
+        }
       });
     } catch (e) {
       console.log("Error when checking and updating apis -> ", e.message);

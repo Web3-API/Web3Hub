@@ -40,7 +40,7 @@ const APIDetail = ({ api, update }: APIDetailProps) => {
 
   useEffect(() => {
     if (dapp.did) {
-      update();
+      void update();
     }
   }, [dapp.did]);
 
@@ -178,7 +178,7 @@ const APIDetail = ({ api, update }: APIDetailProps) => {
                       src="/images/link.svg"
                       alt="icon"
                     />
-                    <a href={pointer} target="_BLANK">
+                    <a href={pointer} target="_BLANK" rel="noreferrer">
                       {pointer}
                     </a>
                   </li>
@@ -194,6 +194,7 @@ const APIDetail = ({ api, update }: APIDetailProps) => {
                 <a
                   href={`${cloudFlareGateway}${api.locationUri}`}
                   target="_BLANK"
+                  rel="noreferrer"
                 >
                   {("ipfs/" + api.locationUri).substring(0, 25) + "..."}
                 </a>
@@ -236,7 +237,7 @@ const APIDetail = ({ api, update }: APIDetailProps) => {
             variant="calloutLarge"
             sx={{ pl: 4, width: "100%" }}
             onClick={() => {
-              router.push(`/playground/ens/${api.pointerUris[0]}`);
+              void router.push(`/playground/ens/${api.pointerUris[0]}`);
             }}
           >
             <Flex sx={{ alignItems: "center", justifyContent: "left" }}>

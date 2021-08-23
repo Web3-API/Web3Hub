@@ -27,7 +27,7 @@ const PlaygroundPage = () => {
         </main>
       </Flex>
       <Global
-        styles={(theme: any) => {
+        styles={(theme: any) => { // eslint-disable-line
           return {
             body: {
               background: theme.colors.w3shade0 + " !important",

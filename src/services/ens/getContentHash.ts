@@ -2,8 +2,8 @@ import { ZERO_ADDRESS } from "./../../constants";
 import { ENS_REGISTRY } from "../../constants";
 import { callView } from "../../utils/ethereum";
 
-import { namehash } from "ethers/lib/utils";
 import { Base58 } from "@ethersproject/basex";
+import { namehash } from "ethers/lib/utils";
 import { ethers } from "ethers";
 
 export const getContentHash = async (

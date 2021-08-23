@@ -15,10 +15,10 @@ const swrOptions = {
 
 interface Props<T> {
   pageProps: React.PropsWithChildren<T>;
-  Component: React.FC<T>;
+  Component: React.FC<T>; // eslint-disable-line
 }
 
-function StatefulApp({ pageProps, Component }: Props<any>) {
+function StatefulApp({ pageProps, Component }: Props<any>) { // eslint-disable-line
   const [{ dapp }] = useStateValue();
   useAuth(dapp);
   return (
@@ -37,7 +37,7 @@ function StatefulApp({ pageProps, Component }: Props<any>) {
   );
 }
 
-function MyApp({ Component, pageProps }: Props<any>) {
+function MyApp({ Component, pageProps }: Props<any>) { // eslint-disable-line
   return (
     <StateProvider>
       <StatefulApp pageProps={pageProps} Component={Component} />

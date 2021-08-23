@@ -17,13 +17,14 @@ module.exports = {
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
     "prettier",
   ],
   rules: {
     "prettier/prettier": ["error"],
     "@typescript-eslint/naming-convention": [
       "error",
-      { selector: "default", format: ["camelCase"] },
+      { selector: "default", format: ["camelCase", "UPPER_CASE"] },
       {
         selector: [
           "classProperty",
@@ -44,7 +45,7 @@ module.exports = {
       //variable must be in camel or upper case
       {
         selector: "variable",
-        format: ["camelCase", "UPPER_CASE"],
+        format: ["camelCase", "UPPER_CASE", "PascalCase"],
         leadingUnderscore: "allow",
       },
       //classes and types must be in PascalCase
@@ -72,7 +73,7 @@ module.exports = {
         format: null,
       },
     ],
-    "@typescript-eslint/explicit-module-boundary-types": "error",
+    "@typescript-eslint/explicit-module-boundary-types": "off", // TODO: set error
     "@typescript-eslint/member-ordering": "error",
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-require-imports": "error",
@@ -103,6 +104,9 @@ module.exports = {
         "newlines-between": "always",
       },
     ],
+    "react/react-in-jsx-scope": "off",
+    // allow jsx syntax in js files (for next.js project)
+    "react/jsx-filename-extension": [1, { extensions: [".ts", ".tsx"] }],
   },
   overrides: [
     {
@@ -118,4 +122,10 @@ module.exports = {
       },
     },
   ],
+  settings: {
+    react: {
+      pragma: "React",
+      version: "detect",
+    },
+  },
 };

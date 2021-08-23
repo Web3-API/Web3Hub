@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { Flex, Themed } from "theme-ui";
 
-export default (): unknown => {
+const SignIn = (): unknown => {
   const [, dispatch] = useStateValue();
   const router = useRouter();
 
@@ -54,3 +54,5 @@ export default (): unknown => {
     </Layout>
   );
 };
+
+export default SignIn;

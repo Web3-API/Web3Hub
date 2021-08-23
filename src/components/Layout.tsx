@@ -13,7 +13,7 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => {
   const [, dispatch] = useStateValue();
-  const { data: apis, error } = useSWR(domain + "/api/apis/active");
+  const { data: apis } = useSWR(domain + "/api/apis/active");
   // https://github.com/system-ui/theme-ui/issues/834#issuecomment-625865772
   const pageLevelAnimationTiming = timing[3] + "s";
 
@@ -37,7 +37,7 @@ const Layout = ({ children }: LayoutProps) => {
     >
       {children}
       <Global
-        styles={(theme: any) => ({
+        styles={(theme: any) => ({ // eslint-disable-line
           "@keyframes shift": {
             from: { transform: "translate(-10px, 0)" },
             to: { transform: "translate(0, 0)" },
@@ -54,13 +54,13 @@ const Layout = ({ children }: LayoutProps) => {
           html: {
             scrollBehavior: "smooth",
             fontSize: "100%",
-            WebkitTextSizeAdjust: "100%",
+            WebkitTextSizeAdjust: "100%", // eslint-disable-line
             fontVariantLigatures: "none",
-            WebkitFontVariantLigatures: "none",
+            WebkitFontVariantLigatures: "none", // eslint-disable-line
             textRendering: "optimizeLegibility",
-            MozOsxFontSmoothing: "grayscale",
+            MozOsxFontSmoothing: "grayscale", // eslint-disable-line
             fontSmoothing: "antialiased",
-            WebkitFontSmoothing: "antialiased",
+            WebkitFontSmoothing: "antialiased", // eslint-disable-line
             textShadow: "rgba(0, 0, 0, 0.01) 0 0 0.0625rem",
             "&::before, &::after": {
               display: "none",

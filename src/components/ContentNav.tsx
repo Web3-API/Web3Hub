@@ -3,7 +3,7 @@ import { ApiData } from "../api/models/types";
 
 import { Flex, Themed } from "theme-ui";
 
-type tab = {
+type Tab = {
   label: string;
   count?: number;
   data: ApiData[];
@@ -12,7 +12,7 @@ type tab = {
 type ContentNav = {
   setActiveTab: (tab: string) => void;
   activeTab: string;
-  tabs: tab[];
+  tabs: Tab[];
 };
 
 const ContentNav = ({ setActiveTab, activeTab, tabs }: ContentNav) => {

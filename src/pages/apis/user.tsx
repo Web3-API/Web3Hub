@@ -23,11 +23,13 @@ const UserApis = () => {
 
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);
-    router.push(router.pathname + "?activeTab=" + tab);
+    void router.push(router.pathname + "?activeTab=" + tab);
   };
 
   useEffect(() => {
-    if (!dapp.did) authenticate();
+    if (!dapp.did) {
+      void authenticate();
+    }
   }, [dapp.did]);
 
   useEffect(() => {
@@ -38,7 +40,7 @@ const UserApis = () => {
 
   useEffect(() => {
     if (router.isReady && !router.query.activeTab) {
-      router.push(router.pathname + "?activeTab=published");
+      void router.push(router.pathname + "?activeTab=published");
     }
   }, [router.isReady, router.query?.activeTab, router.pathname]);
 

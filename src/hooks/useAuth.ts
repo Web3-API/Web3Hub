@@ -23,7 +23,7 @@ export const useAuth = (dapp: State["dapp"]) => {
     };
 
     if (state.dapp.did && isAuthenticated) {
-      checkToken();
+      void checkToken();
     }
   }, [state.dapp.did, cachedToken, isAuthenticated]);
 

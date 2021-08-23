@@ -64,6 +64,7 @@ const CreateAPI = () => {
                   background: "url(/images/outbound.svg) no-repeat",
                 },
               }}
+              rel="noreferrer"
             >
               starter repo
             </a>

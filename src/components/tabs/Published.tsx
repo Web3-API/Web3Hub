@@ -39,7 +39,7 @@ const Published = ({ apis }: PublishedProps) => {
       <Button
         variant="primaryLarge"
         onClick={() => {
-          router.push("/apis/create?activeTab=create");
+          void router.push("/apis/create?activeTab=create");
         }}
         sx={{ display: "inline-block", ml: 3, p: "1.5rem", px: "2.5rem" }}
       >
