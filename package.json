@@ -12,7 +12,13 @@
     "deploy": "cd out && surge && cd ..",
     "prebuild": "yarn install:web3api",
     "predev": "yarn install:web3api",
-    "install:web3api": "npx web3api-worker-install ./public"
+    "install:web3api": "npx web3api-worker-install ./public",
+    "prepare": "husky install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run lint"
+    }
   },
   "dependencies": {
     "@3id/connect": "0.1.6",
@@ -70,6 +76,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "prettier": "^2.3.2",
-    "typescript": "^4.2.4"
+    "typescript": "^4.2.4",
+    "husky": "^7.0.0"
   }
 }
