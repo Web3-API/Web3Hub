@@ -47,14 +47,13 @@ export default class Database {
         username: process.env.TYPEORM_USERNAME,
         password: process.env.TYPEORM_PASSWORD,
         database: process.env.TYPEORM_DATABASE,
-        synchronize: false, // process.env.TYPEORM_SYNCHRONIZE as any,
+        synchronize: process.env.TYPEORM_SYNCHRONIZE as string === 'true',
         logging: process.env.TYPEORM_LOGGING as string === 'true',
         entities: entityFileNames.map((file : any) => context(file).default),
         migrations: undefined, // [process.env.TYPEORM_MIGRATIONS as string],
         ssl: true,
     };
 
-    console.log(connectionOptions);
     return await createConnection(connectionOptions);
   }
 }

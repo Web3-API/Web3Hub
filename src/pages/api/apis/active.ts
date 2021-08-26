@@ -9,14 +9,13 @@ export default async (request: VercelRequest, response: VercelResponse) => {
     try {
       const limit = request.query.limit ? Number(request.query.limit) : 10;
       const page = request.query.page ? Number(request.query.page) : 1;
+      const search = request.query.search ? String(request.query.search) : null;
 
       const database = new Database();
-      const connection = await database.connect();
+      await database.connect();
 
-      console.log(connection);
-
-      const apis = await getCustomRepository(ApiRepository).getAllActive();
-      const totalCount = await getCustomRepository(ApiRepository).getAllActiveCount();
+      const apis = await getCustomRepository(ApiRepository).search(limit, page, search);
+      const totalCount = await getCustomRepository(ApiRepository).searchCount(search);
 
       const meta : PaginationMeta = {
         limit,
@@ -24,8 +23,6 @@ export default async (request: VercelRequest, response: VercelResponse) => {
         max_page: Math.ceil(totalCount / limit) || 1,
         total_count: totalCount,
       }
-
-      // connection.close();
 
       return response.json({
         status: 200,

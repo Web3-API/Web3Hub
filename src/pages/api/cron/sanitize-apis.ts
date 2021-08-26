@@ -12,7 +12,7 @@ export default async (request: VercelRequest) => {
       const database = new Database();
       await database.connect();
 
-      const apis = await getCustomRepository(ApiRepository).getAllActive();
+      const apis = await getCustomRepository(ApiRepository).search();
 
       apis.forEach(async (api: ApiData) => {
         const { valid } = await checkContentIsValid(api.pointerUris, api.locationUri)

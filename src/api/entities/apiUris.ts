@@ -6,6 +6,7 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
+import Apis from "./apis";
 import UriTypes from "./uriTypes";
 
 @Index("api_uris_pkey", ["id"], { unique: true })
@@ -19,6 +20,10 @@ export default class ApiUris {
 
   @Column("bigint", { name: "fk_api_id" })
   public apiId: string;
+
+  @ManyToOne(() => Apis, (apis) => apis.id)
+  @JoinColumn([{ name: "fk_api_id", referencedColumnName: "id" }])
+  public api: Partial<Apis>;
 
   @ManyToOne(() => UriTypes, (uriTypes) => uriTypes.apiUrises)
   @JoinColumn([{ name: "fk_uri_type_id", referencedColumnName: "id" }])

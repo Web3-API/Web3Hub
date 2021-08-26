@@ -10,6 +10,7 @@ import {
 import Organizations from "./organizations";
 import Users from "./users";
 import StarredApis from "./starredApis";
+import ApiUris from "./apiUris";
 
 @Index("apis_pkey", ["id"], { unique: true })
 @Entity("apis", { schema: "public" })
@@ -42,4 +43,7 @@ export default class Apis {
 
   @OneToMany(() => StarredApis, (starredApis) => starredApis.api)
   public starredApis: Partial<StarredApis>[];
+
+  @OneToMany(() => ApiUris, (apiUris) => apiUris.api)
+  public apiUris: Partial<ApiUris>[];
 }
