@@ -2,7 +2,7 @@
 import { Flex, Button, Themed, Field } from 'theme-ui'
 import React, { useRef, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { useWeb3ApiQuery } from '@web3api/react'
+import { useWeb3ApiQuery } from 'cesar-test-react-wrapper'
 import { useStateValue } from '../state/state'
 
 import Badge from './Badge'
@@ -72,7 +72,7 @@ const Playground = ({ api }: PlaygroundProps) => {
   const { name: networkName } = networks[networkID]
 
   const { loading, execute } = useWeb3ApiQuery({
-    uri: `ens/${networkName}/${router.asPath.split('/playground/ens/')[1]}`,
+    uri: `ipfs/QmcZE3G4sFLMuCUNZJEHRfpX9txpuZnkMzJzFu2UE8oeP8`,
     query: selectedMethod,
   })
 
