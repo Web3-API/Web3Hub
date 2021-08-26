@@ -23,3 +23,10 @@ export interface Authentication {
   };
   [k: string]: unknown;
 }
+
+export interface PaginationMeta {
+  limit: number;
+  page: number;
+  max_page: number;
+  total_count: number;
+}
