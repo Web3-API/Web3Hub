@@ -6,19 +6,19 @@ import Layout from '../components/Layout'
 import SortNav from '../components/SortNav'
 import ApiGrid from '../components/ApiGrid'
 import Navbar from '../components/Navbar'
-import Header from '../components/Header'
-import BGWave from '../components/BGWave'
+import Head from '../components/Head'
+import BGCircles from '../components/BGCircles'
 import BottomSpace from '../components/BottomSpace'
 
 const Home = () => {
   const [{ dapp }] = useStateValue()
   return (
     <Layout>
+      <Head />
       <Flex>
         <Navbar />
         <main>
           <div className="contents animate">
-            <Header title="Browse APIs" />
             <section className="content">
               <SortNav />
               {dapp?.apis ? <ApiGrid main apis={dapp.apis} /> : null}
@@ -27,7 +27,7 @@ const Home = () => {
           </div>
         </main>
       </Flex>
-      <BGWave light />
+      <BGCircles />
     </Layout>
   )
 }

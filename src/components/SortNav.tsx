@@ -10,15 +10,15 @@ const SortNav = () => {
 
   const [searchOptions, setsearchOptions] = useState(dapp.apis)
   const handleSearchValuesChange = (value: APIData[]) => {
-    if(value.length === 0) {
+    if (value.length === 0) {
       dispatch({
         type: 'sortSelectApi',
-        payload: -1
-      })  
+        payload: -1,
+      })
     } else {
       dispatch({
         type: 'sortSelectApi',
-        payload: value
+        payload: value,
       })
     }
   }
@@ -30,44 +30,35 @@ const SortNav = () => {
   return (
     <nav>
       <form>
-        {dapp.apis && dapp.apis.length > 0 && (
-          <SearchBox
-            detachedResults
-            large
-            searchBy="name"
-            placeholder={'Search'}
-            labelField="name"
-            valueField="name"
-            options={searchOptions}
-            values={[]}
-            onChange={handleSearchValuesChange}
-          />
-        )}
-
-        <br />
         <Flex
           sx={{
             justifyContent: 'space-between',
             flex: 1,
             alignItems: 'center',
-            color: 'w3darkGreen',
-            fontFamily: 'Montserrat',
-            fontSize: '0.9375rem',
-            fontWeight: '500',
-            lineHeight: '1.125rem',
-            letterSpacing: '-0.025rem',
-            textAlign: 'right',
-            pb: 2
           }}
         >
-          <span>
-            <b>{dapp.apis.length}</b>&nbsp;API's
-          </span>
+          <h2 sx={{ fontSize: '28px' }}>Wrappers</h2>
           <div>
-            <Select sx={{ minWidth: '8rem', border: 'none' }}>
-              <option value="HighestRated">Higest Rated</option>
-              <option value="MostRecent">Most Recent</option>
-              <option value="Alphabetical">Alphabetical</option>
+            <Select
+              sx={{
+                minWidth: '8rem',
+                border: 'none',
+                borderRadius: '20px',
+                backgroundColor: 'w3Grey1',
+                p: '.5rem 1rem',
+                optgroup: {
+                  padding: 6,
+                },
+              }}
+            >
+              <optgroup label="Sort by">
+                <option value="MostRecent">Most Recent</option>
+                <option value="Alphabetical">Alphabetical</option>
+                <option value="HighestRated">Higest Rated</option>
+              </optgroup>
+              <optgroup label="Filter by">
+                <option value="OnlyPublished">Only Published</option>
+              </optgroup>
             </Select>
           </div>
         </Flex>

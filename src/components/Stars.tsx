@@ -18,30 +18,31 @@ const Stars = ({ count, onDark, large, onClick }: BadgeProps) => {
       <img
         className="star"
         src="/images/star.svg"
-        sx={
-          !large
+        sx={{
+          mr:'4px',
+          ...(!large
             ? { width: 'auto' }
             : {
                 width: '1.125rem',
                 height: '1.125rem',
                 top: '-0.125rem',
                 left: '-0.125rem',
-              }
-        }
+              }),
+        }}
       />
       <div
         className="star-count"
         sx={
           !large
             ? {
-                fontWeight: '600',
+                fontWeight: '400',
                 color: onDark ? 'w3OffWhite' : 'black',
                 ml: 2,
                 fontSize: '1.25rem',
                 lineHeight: '1.5rem',
               }
             : {
-                fontWeight: '700',
+                fontWeight: '400',
 
                 letterSpacing: '0rem',
                 color: onDark ? 'w3OffWhite' : 'black',

@@ -30,7 +30,7 @@ const SearchBox = ({
   options,
   values,
   onChange,
-  searchable = true
+  searchable = true,
 }: RDSProps) => {
   // Styling fix
   const forceUpdate: () => void = useState()[1].bind(null, {})
@@ -40,7 +40,7 @@ const SearchBox = ({
 
   let bgs: Record<string, unknown> = {}
   options.map((opt, idx) => {
-    let key = `.react-dropdown-select-item:nth-of-type(${idx+1}):before`
+    let key = `.react-dropdown-select-item:nth-of-type(${idx + 1}):before`
     bgs[key] = {
       background: `url(${cloudFlareGateway}${stripIPFSPrefix(
         opt.locationUri,
@@ -51,26 +51,23 @@ const SearchBox = ({
   return (
     <RDS
       sx={{
-        borderRadius: '0.5rem !important',
+        borderRadius: '1.125rem !important',
         width: large ? '100% !important' : '25rem !important',
-        border: '0.125rem solid !important',
+        border: '0.125rem solid transparent !important',
         color: dark ? 'text' : '#598188 !important',
-        bg: dark ? 'w3shade1 !important' : '#EFF5F4 !important',
+        bg: dark ? 'rgba(0, 0, 0, .32) !important' : '#EFF5F4 !important',
         p: '1rem !important',
-        height: '3.875rem !important',
-        borderColor: dark ? 'text' : 'transparent !important',
+        height: '2.5rem !important',
         '&[aria-expanded="true"]': {
-          borderBottomLeftRadius: detachedResults ? '0.5rem !important' : '0 !important',
-          borderBottomRightRadius: detachedResults ? '0.5rem !important' : '0 !important',
+          borderBottomLeftRadius: detachedResults ? '1.125rem !important' : '0 !important',
+          borderBottomRightRadius: detachedResults ? '1.125rem !important' : '0 !important',
           borderBottomColor: detachedResults ? 'text' : 'transparent !important',
           '*': {
             color: dark ? 'white !important' : 'text',
           },
           '.react-dropdown-select-content': {
             '&::before': {
-              background: dark
-                ? 'url(/images/magnifying-glass-white.svg) no-repeat'
-                : 'url(/images/magnifying-glass.svg) no-repeat !important',
+              background: 'url(/images/magnifying-glass-white.svg) no-repeat',
             },
           },
         },
@@ -83,8 +80,9 @@ const SearchBox = ({
         },
         '.react-dropdown-select-input': {
           color: dark ? 'white !important' : 'text',
-          fontFamily: 'Istok Web !important',
-          fontSize: '0.875rem !important',
+          fontFamily:'Nunito Sans',
+          fontSize: '1rem !important',
+          fontWeight:'600',
           lineHeight: '100% !important',
           width: '12.5rem !important',
         },
@@ -110,7 +108,6 @@ const SearchBox = ({
         },
         '.react-dropdown-select-item': {
           borderColor: 'rgba(104,129,132,.5) !important',
-          fontFamily: 'Montserrat !important',
           fontWeight: 'bold !important',
           fontSize: '0.875rem !important',
           lineHeight: '0.875rem !important',
@@ -155,7 +152,6 @@ const SearchBox = ({
           },
           span: {
             pl: '.25rem',
-            fontFamily: 'Istok Web',
             fontSize: '0.875rem',
             lineHeight: '150%',
             height: '1.5rem',
@@ -165,7 +161,7 @@ const SearchBox = ({
             justifyContent: 'center',
           },
         },
-        ...bgs
+        ...bgs,
       }}
       clearable
       keepSelectedInList
@@ -178,6 +174,8 @@ const SearchBox = ({
       values={values}
       onChange={onChange}
       searchable={searchable}
+      
+      
       multi={false}
     />
   )

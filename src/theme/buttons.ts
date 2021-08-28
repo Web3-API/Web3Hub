@@ -1,20 +1,20 @@
 let buttons: Record<string, any> = {}
 
 const buttonBase = {
-  fontFamily: 'Montserrat',
+  fontFamily: 'Nunito Sans',
   fontStyle: 'normal',
   fontWeight: 'bold',
-  fontSize: '14px',
+  fontSize: '16px',
   lineHeight: '14px',
   display: 'flex',
   alignItems: 'center',
   textAlign: 'center',
   letterSpacing: '-0.6px',
-  textTransform: 'uppercase',
-  borderRadius: '4px',
+  borderRadius: '20px',
   bg: 'transparent',
   border: '2px solid transparent',
-  color: 'text',
+  color: 'white',
+  transition: 'all .2s'
 }
 
 const buttonPaddingSizes = {
@@ -23,8 +23,8 @@ const buttonPaddingSizes = {
     py: '0.75rem'
   },
   medium: {
-    px: '3rem',
-    py: '1rem'
+    px: '1.125rem',
+    py: '0.625rem'
   },
   large: {
     px: '4rem',
@@ -34,13 +34,11 @@ const buttonPaddingSizes = {
 
 const buttonColorStates = {
   primary: {
-    bg: 'w3ButtonTeal',
-    borderColor: 'w3ButtonTeal',
-    color: 'white',
-    boxShadow: '0px 15px 30px rgba(20, 102, 204, 0.16)',
+    backgroundColor: 'w3ButtonPrimary',
+    borderColor: 'w3ButtonPrimary',
     '&:hover': {
-      bg: 'w3TextNavTeal',
-      borderColor: 'w3TextNavTeal',
+      bg: 'w3ButtonPrimaryHover',
+      borderColor: 'w3ButtonPrimaryHover',
     },
     '&:active': {
       bg: '#255661',
@@ -53,11 +51,9 @@ const buttonColorStates = {
     }
   },
   secondary: {
-    borderColor: 'text',
-    color: 'text',
-    '&:hover': {
-      bg: 'rgba(104, 129, 132, 0.1)',
-    },
+    bg: 'w3ButtonSecondary',
+    borderColor: 'w3ButtonSecondary',
+    color: 'white',
     '&:active': {
       bg: 'rgba(104, 129, 132, 0.2)',
     },

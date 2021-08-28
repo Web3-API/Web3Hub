@@ -15,14 +15,26 @@ const ApiGrid = ({ apis, main }: ApiGridProps) => {
 
   const router = useRouter()
   return (
-    <div>
+    <div
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        minHeight: '70vh',
+      }}
+    >
       {main ? (
         <>
           <Grid
             gap={'3%'}
             sx={{
-              gridTemplateColumns: ['1fr', '1fr 1fr', '1fr 1fr 1fr', '1fr 1fr 1fr 1fr'],
+              gridTemplateColumns: [
+                'minmax(300px, 380px)',
+                'minmax(300px, 380px) minmax(300px, 380px)',
+                'minmax(300px, 380px) minmax(300px, 380px) minmax(300px, 380px)',
+              ],
               rowGap: ['1%', '2%', '3%', '4%'],
+              columnGap: '16px',
             }}
           >
             {search !== undefined && search.sortedApi !== -1 ? (
@@ -31,29 +43,27 @@ const ApiGrid = ({ apis, main }: ApiGridProps) => {
               apis.map((api, idx) => <Card api={api} boxShadowOn key={idx + '-api'} />)
             )}
           </Grid>
-          <p
+          <div
             sx={{
-              mt: '5rem',
-              fontFamily: 'Montserrat',
-              fontSize: '1.25rem',
-              lineHeight: '3.25rem',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              alignSelf: 'center',
               textAlign: 'center',
-              letterSpacing: '-0.0625rem',
-              color: 'text',
+              mb: 4,
             }}
           >
             You reached the end of the list. <b>Don’t stop here!</b>
-            <br />
             <Button
-              variant="primaryLarge"
+              sx={{ mt: '14px' }}
+              variant="primaryMedium"
               onClick={() => {
                 router.push('/apis/create?activeTab=create')
               }}
-              sx={{ display: 'inline-block', ml: 3, mt: 4 }}
             >
               <span>Create New API</span>
             </Button>
-          </p>
+          </div>
         </>
       ) : (
         <Grid

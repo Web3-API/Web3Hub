@@ -29,9 +29,11 @@ const Layout = ({ children }: LayoutProps) => {
     <div
       className="layout"
       sx={{
+        overflow: 'hidden',
         '&::before, &::after': {
           display: 'none',
         },
+        background: '#1E1D22',
       }}
     >
       {children}
@@ -99,8 +101,6 @@ const Layout = ({ children }: LayoutProps) => {
             backgroundAttachment: 'scroll',
           },
           main: {
-            height: '100vh',
-            overflowY: 'scroll',
             overflowX: 'hidden',
             flex: 1,
             display: 'flex',
@@ -129,27 +129,22 @@ const Layout = ({ children }: LayoutProps) => {
           },
           pre: {
             overflowX: 'auto',
-            border: '2px solid rgba(205, 208, 227, 0.295455)',
-            padding: '.75rem',
+            padding: '.5rem 1rem',
             borderRadius: '8px',
-            marginTop: 0,
-            fontFamily: 'monospace',
+            backgroundColor: theme.colors.w3Grey3,
             fontStyle: 'normal',
             fontWeight: 'normal',
-            fontSize: '14px',
-            lineHeight: '140.62%',
-            color: '#000000',
+            fontSize: '16px',
+            lineHeight: '150%',
+            color: '#FFF',
             code: {
               color: 'inherit',
             },
           },
           '.contents': {
-            maxWidth: '76.5rem',
-            margin: 'auto',
             width: '100%',
             height: '100%',
-            paddingLeft: '1rem',
-            paddingRight: '1rem',
+            padding: '0 4.6875rem',
           },
           '.contents.animate': {
             animation: `fadeIn ${pageLevelAnimationTiming}, shift ${pageLevelAnimationTiming}`,
@@ -159,12 +154,13 @@ const Layout = ({ children }: LayoutProps) => {
             padding: '0',
             listStyle: 'none',
           },
-          'a, Button, [type="Button"], [type="reset"], [type="submit"], [type="file"], [type="file"]::-webkit-file-upload-Button': {
-            textTransform: 'none',
-            appearance: 'none',
-            cursor: 'pointer',
-            textDecoration: 'none',
-          },
+          'a, Button, [type="Button"], [type="reset"], [type="submit"], [type="file"], [type="file"]::-webkit-file-upload-Button':
+            {
+              textTransform: 'none',
+              appearance: 'none',
+              cursor: 'pointer',
+              textDecoration: 'none',
+            },
           'a:visited, a:active': {
             textDecoration: 'none',
           },
@@ -183,7 +179,6 @@ const Layout = ({ children }: LayoutProps) => {
             background: 'rgba(255, 255, 255, 0.04)',
           },
           '.text-nav': {
-            fontWeight: 'bold',
             fontSize: '0.75rem',
             lineHeight: '0.875rem',
             letterSpacing: '-0.0375rem',
