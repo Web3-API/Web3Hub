@@ -50,7 +50,7 @@ export default class Auth {
   private createDID() {
     const resolver = {
       ...KeyDidResolver.getResolver(),
-      ...ThreeIdResolver.getResolver(Auth.ceramic),
+      ...ThreeIdResolver.getResolver(Auth.ceramic as any),
     }
     const did = new DID({ resolver })
     return did
