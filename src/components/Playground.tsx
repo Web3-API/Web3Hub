@@ -72,7 +72,7 @@ const Playground = ({ api }: PlaygroundProps) => {
   const { name: networkName } = networks[networkID]
 
   const { loading, execute } = useWeb3ApiQuery({
-    uri: `ipfs/QmcZE3G4sFLMuCUNZJEHRfpX9txpuZnkMzJzFu2UE8oeP8`,
+    uri: `ens/${networkName}/${router.asPath.split('/playground/ens/')[1]}`,
     query: selectedMethod,
   })
 
