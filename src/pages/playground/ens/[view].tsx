@@ -2,7 +2,7 @@
 import { Flex } from 'theme-ui'
 import { Global } from '@emotion/react'
 import { useRouter } from 'next/router'
-import { Web3ApiProvider } from 'cesar-test-react-wrapper'
+import { Web3ApiProvider } from '@web3api/react'
 import Layout from '../../../components/Layout'
 import Navbar from '../../../components/Navbar'
 import Header from '../../../components/Header'

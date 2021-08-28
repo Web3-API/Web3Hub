@@ -2,7 +2,7 @@
 import { Flex, Button, Themed, Field } from 'theme-ui'
 import React, { useRef, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { useWeb3ApiQuery } from 'cesar-test-react-wrapper'
+import { useWeb3ApiQuery } from '@web3api/react'
 import { useStateValue } from '../state/state'
 
 import Badge from './Badge'
