@@ -7,6 +7,7 @@ import useLocalStorage from "./useLocalStorage";
 
 import axios from "axios";
 import { useCallback, useEffect } from "react";
+import { JWE } from "did-jwt";
 
 export const useAuth = (dapp: State["dapp"]) => {
   const [state, dispatch] = useStateValue();
@@ -17,7 +18,11 @@ export const useAuth = (dapp: State["dapp"]) => {
 
   useEffect(() => {
     const checkToken = async () => {
-      const auth = await Auth.get("authentication");
+      const auth: {
+        github?: {
+          accessToken: JWE;
+        };
+      } = await Auth.get("authentication");
       const ghAccessToken = auth?.github?.accessToken;
       await githubHandler(ghAccessToken, cachedToken, dispatch);
     };

@@ -85,14 +85,7 @@ module.exports = {
       },
     ],
     "@typescript-eslint/no-floating-promises": "error",
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        devDependencies: false,
-        optionalDependencies: true,
-        peerDependencies: false,
-      },
-    ],
+    "import/no-extraneous-dependencies": "off",
     "import/order": [
       "error",
       {

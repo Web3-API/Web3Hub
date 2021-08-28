@@ -74,4 +74,4 @@ redis-data
 *.puml
 
 # Web3API Thread 
-packages/ui/public/thread.js
+/public/thread.js

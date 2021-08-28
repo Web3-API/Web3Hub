@@ -35,7 +35,7 @@ export const fetchOrganizations = async (token: string) => {
   try {
     const options = {
       headers: {
-        Authorization: `token ${token}`, // eslint-disable-line
+        authorization: `token ${token}`,
       },
     };
     const response = await axios.get(GITHUB_API_DOMAIN + "/user/orgs", options);

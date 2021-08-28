@@ -28,11 +28,14 @@ export default class Auth {
     }
   }
 
-  public static async set(key: string, values: any): Promise<void> { // eslint-disable-line
+  public static async set(
+    key: string,
+    values: Record<string, unknown>
+  ): Promise<void> {
     await Auth.idx.set(key, values);
   }
 
-  public static async get(key: string): Promise<any> { // eslint-disable-line
+  public static async get(key: string): Promise<unknown> {
     return await Auth.idx.get(key);
   }
 
@@ -51,7 +54,7 @@ export default class Auth {
   private createDID() {
     const resolver = {
       ...KeyDidResolver.getResolver(),
-      ...ThreeIdResolver.getResolver(Auth.ceramic),
+      ...ThreeIdResolver.getResolver(Auth.ceramic as any), // eslint-disable-line
     };
     const did = new DID({ resolver });
     return did;

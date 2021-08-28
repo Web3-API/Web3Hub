@@ -39,11 +39,11 @@ export function web3apiReducer(
           },
           {
             uri: "w3://ens/sha3.web3api.eth",
-            plugin: sha3Plugin() as undefined,
+            plugin: sha3Plugin(),
           },
           {
             uri: "w3://ens/uts46.web3api.eth",
-            plugin: uts46Plugin() as undefined,
+            plugin: uts46Plugin(),
           },
         ];
 
